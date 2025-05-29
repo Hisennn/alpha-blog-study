@@ -2,22 +2,26 @@
   <h1 class="font-medium text-4xl text-gray-100 text-center">Article <%= @article.id %></h1>
   
   <div class="flex flex-col gap-4 mt-8 w-full leading-snug">
-    <div class="flex flex-col gap-1 pb-4 border-b border-gray-700">
+    <div class="flex flex-col gap-1 pb-4 border-b border-gray-600">
       <h4 class="text-2xl text-gray-200 font-medium">Title: </h4>
       <p class="text-gray-300 break-words"><%= @article.title %></p>
     </div>
-    <div class="flex flex-col gap-1 pb-4 border-b border-gray-700">
+    <div class="flex flex-col gap-1 pb-4 border-b border-gray-600">
       <h4 class="text-2xl text-gray-200 font-medium">Description: </h4>
       <p class="text-gray-300 break-words"><%= @article.description %></p>
     </div>
   </div>
   
-  <div class="flex gap-4 mt-4 justify-end">
-    <%= link_to 'Edit', edit_article_path(@article),
-        class: 'hover:bg-blue-400 bg-blue-700 text-gray-100 font-medium text-[1.125rem] py-2 px-4' %>
-    <%= button_to 'Delete', article_path(@article),
-        method: :delete,
-        class: 'hover:bg-red-300 hover:cursor-pointer bg-red-500 text-gray-100 font-medium text-[1.125rem] py-2 px-4',
-        data: { turbo_confirm: "Are you sure?"} %>
+  <div class="flex mt-4 justify-between items-center">
+    <%= link_to 'Back', articles_path, class:'underline text-gray-100 hover:text-gray-300 text-[1.125rem] self-start' %>
+    <div class="flex gap-2">
+      <%= link_to 'Edit', edit_article_path(@article),
+          class: 'hover:bg-blue-400 bg-blue-700 text-gray-100 font-medium text-[1.125rem] py-2 px-4' %>
+      <%= button_to 'Delete', article_path(@article),
+          method: :delete,
+          class: 'hover:bg-red-300 hover:cursor-pointer bg-red-500 text-gray-100 font-medium text-[1.125rem] py-2 px-4',
+          data: { turbo_confirm: "Are you sure?"},
+          form: { class: 'inline-block m-0 p-0 align-middle' } %>
+    </div>
   </div>
 </div>
