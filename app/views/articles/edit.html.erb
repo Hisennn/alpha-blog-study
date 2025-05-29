@@ -1,3 +1,5 @@
-<h1>Edit article</h1>
-<%= render 'form' %>
-<%= link_to 'Cancel', articles_path %>
+<div class="container max-w-[1200px] mx-auto flex flex-col gap-4 p-4 ">
+  <h1 class="font-medium text-4xl text-gray-100 text-center mb-8">Edit article</h1>
+  <%= render 'form' %>
+  <%= link_to 'Cancel', articles_path, class:'underline text-gray-100 hover:text-gray-300 text-[1.125rem]' %>
+</div>

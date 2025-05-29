@@ -1,24 +1,32 @@
 <% if @article.errors.any? %>
-  <h2>The following errors prevented the article from being created</h2>
-  <ul>
+<div class="flex flex-col gap-2">
+  <h3 class="text-[1.125rem] text-red-400 font-medium">The following errors prevented the article from being created:</h3>
+  <ul class="text-red-200 list-disc italic ml-8">
     <% @article.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
-  </ul>
+  </ul> 
+</div>
 <% end %>
 
 
 <%= form_with model: @article, html: { 'data-turbo': false } do |f| %>
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </p>
+<div class="flex flex-col gap-4 leading-snug">
+  <div class="flex flex-col gap-1.5">
+    <%= f.label :title, class: "text-2xl text-gray-300 font-medium" %><br>
+    <%= f.text_field :title, cols: 40,
+      placeholder: "Your title",
+      class: "border border-gray-600 focus:border-gray-300 text-gray-200 bg-transparent outline-none px-4 py-2 w-full" %>
+  </div>
+  <div class="flex flex-col gap-1.5 mt-4">
+    <%= f.label :description, class: "text-2xl text-gray-300 font-medium" %><br>
+    <%= f.text_area :description, rows: 4, cols: 40,
+      placeholder: "Your description",
+      class: "border border-gray-600 focus:border-gray-300 text-gray-200 bg-transparent outline-none px-4 py-2 w-full" %>
+  </div>
 
-  <p>
-    <%= f.submit %>
-  </p>
+  <div>
+    <%= f.submit class: "text-gray-100 bg-blue-500 hover:bg-blue-700 hover:text-gray-300 text-2xl py-2 px-4 transition-all duration-200 ease-in-out cursor-pointer"%>
+  </div>
+</div>
 <%end%>

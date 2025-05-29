@@ -22,18 +22,30 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="bg-gray-800">
+  <body class="bg-gray-800 leading-tight">
   <header>
-    <nav class="flex items-center justify-between bg-gray-900 p-4">
-      <span class="font-bold text-2xl text-gray-100"><%= link_to 'ArtiCly', root_path%></span>
+    <nav class="flex items-center justify-between bg-gray-900 p-4 flex-wrap">
+      <span class="font-bold text-2xl text-gray-100"><%= link_to 'Articles', root_path%></span>
       <ul class="flex space-x-4 text-gray-100 text-lg">
-        <li><%= link_to 'Home', root_path %></li>
-        <li><%= link_to 'Articles', articles_path %></li>
-        <li><%= link_to 'About', about_path %></li>
+        <li>
+          <%= link_to 'Home', root_path,
+              class: "hover:text-blue-400 transition-all duration-200 ease-in-out py-1 px-2 
+              #{controller_name == 'pages' && action_name == 'home' ? 'text-blue-400' : ''}" %>
+        </li>
+        <li>
+          <%= link_to 'Articles', articles_path,
+              class: "hover:text-blue-400 transition-all duration-200 ease-in-out py-1 px-2 
+              #{controller_name == 'articles' ? 'text-blue-400' : ''}" %>
+        </li>
+        <li>
+          <%= link_to 'About', about_path,
+              class: "hover:text-blue-400 transition-all duration-200 ease-in-out py-1 px-2 
+              #{controller_name == 'pages' && action_name == 'about' ? 'text-blue-400' : ''}" %>
+        </li>
       </ul>
     </nav>
   </header>
-
+    
     <%= render 'layouts/messages' %>
     <%= yield %>
   </body>
