@@ -3,6 +3,7 @@
   <table class="table-fixed w-full border border-gray-700 border-collapse leading-snug">
   <thead>
     <tr class="bg-gray-700 text-gray-100">
+      <th class="border border-gray-600 px-4 py-2 text-left w-1/4">Modification</th>
       <th class="border border-gray-600 px-4 py-2 text-left w-1/4">Title</th>
       <th class="border border-gray-600 px-4 py-2 text-left w-1/2">Description</th>
       <th class="border border-gray-600 px-4 py-2 text-center w-1/5"  colspan="3">Actions</th>
@@ -11,8 +12,9 @@
   <tbody>
   <% @articles.each do |article| %>
       <tr class="text-gray-200">
-        <td class="border border-gray-600 break-words px-4 py-2 font-semibold align-top"><%= article.title %></td>
-        <td class="border border-gray-600 text-top break-words px-4 py-2"><%= article.description %></td>
+        <td class="border border-gray-600 break-words px-4 py-2 font-semibold align-top">Created <%= time_ago_in_words(article.created_at) %> ago, <br>Edited <%= time_ago_in_words(article.updated_at) %> ago</td>
+        <td class="border border-gray-600 break-words px-4 py-2 font-semibold align-top"><%= truncate(article.title, length: 30) %></td>
+        <td class="border border-gray-600 text-top break-words px-4 py-2"><%= truncate(article.description, length: 76) %></td>
         <td class="border border-gray-600 px-2 py-2 text-center">
           <%= link_to 'Show', article_path(article), class: "text-blue-400 hover:text-blue-700 hover:underline" %>
         </td>
