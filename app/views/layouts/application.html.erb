@@ -36,7 +36,12 @@
         <li>
           <%= link_to 'Articles', articles_path,
               class: "hover:text-blue-400 transition-all duration-200 ease-in-out py-1 px-2 
-              #{controller_name == 'articles' ? 'text-blue-400' : ''}" %>
+              #{controller_name == 'articles' && action_name == 'index' ? 'text-blue-400' : ''}" %>
+        </li>
+        <li>
+          <%= link_to 'Create Article', new_article_path,
+              class: "hover:text-blue-400 transition-all duration-200 ease-in-out py-1 px-2 
+              #{controller_name == 'articles' && action_name == 'new' ? 'text-blue-400' : ''}" %>
         </li>
         <li>
           <%= link_to 'About', about_path,

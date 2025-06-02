@@ -1,36 +1,24 @@
-<div class="container max-w-[1200px] mx-auto flex flex-col gap-12 p-4 items-center">
+<div class="container max-w-[1200px] mx-auto flex flex-col gap-16 p-4 items-center">
   <h1 class="font-medium text-4xl text-gray-100 text-center">Articles Page</h1>
-  <table class="table-fixed w-full border border-gray-700 border-collapse leading-snug">
-  <thead>
-    <tr class="bg-gray-700 text-gray-100">
-      <th class="border border-gray-600 px-4 py-2 text-left w-1/4">Modification</th>
-      <th class="border border-gray-600 px-4 py-2 text-left w-1/4">Title</th>
-      <th class="border border-gray-600 px-4 py-2 text-left w-1/2">Description</th>
-      <th class="border border-gray-600 px-4 py-2 text-center w-1/5"  colspan="3">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @articles.each do |article| %>
-      <tr class="text-gray-200">
-        <td class="border border-gray-600 break-words px-4 py-2 font-semibold align-top">Created <%= time_ago_in_words(article.created_at) %> ago, <br>Edited <%= time_ago_in_words(article.updated_at) %> ago</td>
-        <td class="border border-gray-600 break-words px-4 py-2 font-semibold align-top"><%= truncate(article.title, length: 30) %></td>
-        <td class="border border-gray-600 text-top break-words px-4 py-2"><%= truncate(article.description, length: 76) %></td>
-        <td class="border border-gray-600 px-2 py-2 text-center">
-          <%= link_to 'Show', article_path(article), class: "text-blue-400 hover:text-blue-700 hover:underline" %>
-        </td>
-        <td class="border border-gray-600 px-2 py-2 text-center">
-          <%= link_to 'Edit', edit_article_path(article), class: "text-gray-300 hover:text-gray-500 hover:underline" %>
-        </td>
-        <td class="border border-gray-600 px-2 py-2 text-center">
-          <%= button_to 'Delete', article_path(article),
-              method: :delete,
-              data: { turbo_confirm: "Are you sure?" },
-              class: "text-red-500 hover:text-red-800 font-bold cursor-pointer hover:underline" %>
-        </td>
-    </tr>
-  <% end %>
-  </tbody>
-  </table>
 
-  <%= link_to ' + Create New Article', new_article_path, class: "text-gray-100 bg-blue-500 hover:bg-blue-700 hover:text-gray-300 text-2xl py-2 px-4 transition-all duration-200 ease-in-out"%>
+  <% @articles.each do |article| %>
+    <div class="bg-gray-200 rounded-sm shadow-md py-6 px-6 w-full flex flex-col gap-4 leading-tight">
+      <span class="text-center italic text-gray-800 px-2 pb-4 border-b border-gray-400 text-[0.925rem]">by User</span>
+      <div class="justify-start flex flex-col gap-1 px-2 pb-4 border-b border-gray-400">
+        <h2 class="text-[1.575rem] font-semibold text-gray-900"><%= truncate(article.title, length: 40) %></h2>
+        <p class="text-gray-700 text-[1.075rem]"><%= truncate(article.description, length: 100) %></p>
+      </div>
+      <span class="text-gray-600 text-[0.825rem] text-center px-2 pb-4 border-b border-gray-400">Created <%= time_ago_in_words(article.created_at) %> ago, Edited <%= time_ago_in_words(article.updated_at) %> ago</span>
+      <div class="flex justify-center items-center gap-2 font-bold">
+        <%= link_to 'Show', article_path(article), class: "rounded-sm text-blue-100 px-4 py-2 bg-blue-700 hover:bg-blue-900" %>
+        
+        <%= link_to 'Edit', edit_article_path(article), class: "rounded-sm text-green-100 px-4 py-2 bg-green-700 hover:bg-green-900" %>
+      
+        <%= button_to 'Delete', article_path(article),
+            method: :delete,
+            data: { turbo_confirm: "Are you sure?" },
+            class: "rounded-sm text-red-100 cursor-pointer px-4 py-2 bg-red-700 hover:bg-red-900" %>
+      </div>
+    </div>
+  <% end %>
 </div>
