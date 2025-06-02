@@ -9,7 +9,7 @@
         <p class="text-gray-700 text-[1.075rem]"><%= truncate(article.description, length: 150) %></p>
       </div>
       <span class="text-gray-600 text-[0.825rem] text-center px-2 pb-4 border-b border-gray-400">Created <%= time_ago_in_words(article.created_at) %> ago, Edited <%= time_ago_in_words(article.updated_at) %> ago</span>
-      <div class="flex justify-center items-center gap-2 font-bold">
+      <div class="flex flex-wrap justify-center items-center gap-2 font-bold">
         <%= link_to 'Show', article_path(article), class: "rounded-sm text-blue-100 px-4 py-2 bg-blue-700 hover:bg-blue-900" %>
         
         <%= link_to 'Edit', edit_article_path(article), class: "rounded-sm text-green-100 px-4 py-2 bg-green-700 hover:bg-green-900" %>
