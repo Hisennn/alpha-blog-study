@@ -1,6 +1,6 @@
 <div class="container max-w-[1200px] mx-auto flex flex-col gap-4 p-4 ">
-  <h1 class="font-medium text-4xl text-gray-100 text-center">Article <%= @article.id %></h1>
-  
+  <h1 class="flex gap-3 items-center font-medium text-4xl text-gray-100 justify-center">Article <%= @article.id %> <span class="text-2xl italic text-gray-400">by <%= @article.user.username if @article.user %></span></h1>
+
   <div class="flex flex-col gap-4 mt-8 w-full leading-snug">
     <div class="flex flex-col gap-1 pb-4 border-b border-gray-600">
       <h4 class="text-2xl text-gray-200 font-medium">Title: </h4>
@@ -11,7 +11,7 @@
       <p class="text-gray-300 break-words"><%= @article.description %></p>
     </div>
   </div>
-  
+
   <div class="flex mt-4 justify-between items-center">
     <%= link_to 'Back', articles_path, class:'underline text-gray-100 hover:text-gray-300 text-[1.125rem] self-start' %>
     <div class="flex gap-2">
